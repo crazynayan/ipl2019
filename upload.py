@@ -17,6 +17,8 @@ def users():
 
 
 def players():
+    Player.objects.delete()
+    print(f"Deleted all existing players")
     with open('source_data/players.json') as file:
         player_list: list = json.load(file)
     for index, player_dict in enumerate(player_list):

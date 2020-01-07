@@ -2,7 +2,7 @@
 
 {% block app_content %}
 
-    <h1>{{ title }}</h1>
+    <h1>{{ username.upper() }} - Players</h1>
     <br>
     <table class="table table-bordered table-sm table-hover">
         <thead class="thead-dark">
@@ -12,9 +12,10 @@
             <th scope="col" class="text-center">Score</th>
             <th scope="col" class="text-center">Cost</th>
             <th scope="col" class="text-center">Base</th>
-            <th scope="col" class="text-center">Owner#1</th>
-            <th scope="col" class="text-center">Owner#2</th>
+            <th scope="col" class="text-center">Price</th>
             <th scope="col" class="text-center">Team</th>
+            <th scope="col" class="text-center">Type</th>
+            <th scope="col" class="text-center">Country</th>
         </tr>
         </thead>
         <tbody>
@@ -35,30 +36,19 @@
                 <td class="text-center align-middle">
                     {{ player.base }}
                 </td>
-                <td class="text-center align-middle">
-                    {% if player.owner1 %}
-                        <a href="{{ url_for('user_players', username=player.owner1) }}"
-                           class="btn btn-primary btn-block">
-                            {{ player.owner1.upper() }} @ {{ player.price1 }}
-                        </a>
-                    {% else %}
-                        Unsold
-                    {% endif %}
-                </td>
-                <td class="text-center align-middle">
-                    {% if player.owner2 %}
-                        <a href="{{ url_for('user_players', username=player.owner2) }}"
-                           class="btn btn-primary btn-block">
-                            {{ player.owner2.upper() }} @ {{ player.price2 }}
-                        </a>
-                    {% else %}
-                        Unsold
-                    {% endif %}
+                <td class="text-center font-weight-bold align-middle">
+                    {{ player.price1 if player.owner1 == username else player.price2 }}
                 </td>
                 <td class="text-center align-middle">
                     <a href="{{ url_for('team_players', team=player.team) }}" class="btn btn-primary btn-block">
                         {{ player.team }}
                     </a>
+                </td>
+                <td class="text-center align-middle">
+                    {{ player.type }}
+                </td>
+                <td class="text-center align-middle">
+                    {{ player.country }}
                 </td>
             </tr>
         {% endfor %}

@@ -1,4 +1,4 @@
-# Super IPL League - IPL 2019
+# Super Fantasy League - IPL 2019
 
 This source code is to play an online fantasy league for Indian Premier League 2019.
 This is only for a closed group of friends. 

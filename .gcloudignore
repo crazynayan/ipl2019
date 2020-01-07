@@ -8,3 +8,5 @@ docker-compose.yml
 .gitignore
 venv/
 .git/
+source_data/
+upload.py
